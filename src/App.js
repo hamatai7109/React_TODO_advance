@@ -4,6 +4,7 @@ import Todo from "./components/Todo";
 import { nanoid, nanoids } from "nanoid";
 import React, { useState, useEffect, useRef } from "react";
 import usePrevious from "./components/util/usePrevious";
+import TaskList from "./components/TaskList";
 
 //App関数の外でフィルターを定義することで、レンダリングの影響を受けなくする。
 const FILTER_MAP = {
@@ -108,10 +109,7 @@ function App(props) {
           <span className="text-red-700 mr-1">{headingNum}</span>
           {headingText}
         </h2>
-        <div className="flex mt-4 md:items-center justify-center gap-3 md:flex-col">
-          {filterList}
-        </div>
-        <ul className="mt-5 flex flex-col gap-8">{taskList}</ul>
+        <TaskList filter={filter} filterList={filterList} taskList={taskList} />
       </div>
     </div>
   );
