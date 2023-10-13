@@ -27,66 +27,68 @@ const Todo = (props) => {
     }
   }
 
+  // 編集中の画面
   const editingTemplate = (
-    <form className="stack-small" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label className="todo-label" htmlFor={props.id}>
+    <form onSubmit={handleSubmit}>
+      <div className="flex flex-col gap-3">
+        <label className="text-xl" htmlFor={props.id}>
           New name for {props.name}
         </label>
         <input
           id={props.id}
-          className="todo-text"
+          className="h-10 rounded-md p-2"
           type="text"
           value={newName}
+          placeholder="Edit here..."
           onChange={handleChange}
           ref={editFieldRef}
         />
       </div>
-      <div className="btn-group">
+      <div className="mt-5 flex justify-center gap-2">
         <button
           type="button"
-          className="btn todo-cancel"
+          className="btn w-1/2 hover:bg-green-400"
           onClick={() => setEditing(false)}
         >
           Cancel
-          <span className="visually-hidden">renaming {props.name}</span>
         </button>
-        <button type="submit" className="btn btn__primary todo-edit">
+        <button type="submit" className="btn w-1/2">
           Save
-          <span className="visually-hidden">new name for {props.name}</span>
         </button>
       </div>
     </form>
   );
+  // 一覧表示中の画面
   const viewTemplate = (
-    <div className="stack-small">
-      <div className="c-cb">
+    <div>
+      <div className="flex items-center">
         <input
           id={props.id}
+          className="h-9 w-9"
           type="checkbox"
           defaultChecked={props.completed}
           // チェックの切り替えをpropsで親のApp.jsに返す。
           onChange={() => props.toggleTaskCompleted(props.id)}
         />
-        <label className="todo-label" htmlFor={props.id}>
+        <label className="ml-3 text-xl" htmlFor={props.id}>
           {props.name}
         </label>
       </div>
-      <div className="btn-group">
+      <div className="mt-3 flex justify-center gap-2">
         <button
           type="button"
-          className="btn"
+          className="btn w-1/2"
           onClick={() => setEditing(true)}
           ref={editButtonRef}
         >
-          Edit <span className="visually-hidden">{props.name}</span>
+          Edit
         </button>
         <button
           type="button"
-          className="btn btn__danger"
+          className="btn w-1/2 hover:bg-red-500"
           onClick={() => props.deleteTask(props.id)}
         >
-          Delete <span className="visually-hidden">{props.name}</span>
+          Delete
         </button>
       </div>
     </div>
@@ -102,11 +104,7 @@ const Todo = (props) => {
     }
   }, [isEditing, wasEditing]);
 
-  return (
-    <li className="todo stack-small">
-      {isEditing ? editingTemplate : viewTemplate}
-    </li>
-  );
+  return <li>{isEditing ? editingTemplate : viewTemplate}</li>;
 };
 
 export default Todo;

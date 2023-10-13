@@ -92,20 +92,21 @@ function App(props) {
   }, [tasks.length, prevTaskLength]);
 
   return (
-    <div className="todoapp stack-large">
-      <h1>TodoMatic</h1>
+    <div className="mx-auto my-8 w-3/4 bg-gray-200 p-10">
+      <h1 className="text-center text-5xl">Todo App</h1>
       <Form addTask={addTask} />
-      <div className="filters btn-group stack-exception">{filterList}</div>
-      <h2 id="list-heading" tabIndex="-1" ref={listHeadingRef}>
-        {headingText}
-      </h2>
-      <ul
-        role="list"
-        className="todo-list stack-large stack-exception"
-        aria-labelledby="list-heading"
-      >
-        {taskList}
-      </ul>
+      <div className="flex justify-center gap-3">{filterList}</div>
+      <div className="mx-auto w-3/4">
+        <h2
+          id="list-heading"
+          tabIndex="-1"
+          className="mt-10 border-2 bg-white p-3 text-center text-3xl font-bold"
+          ref={listHeadingRef}
+        >
+          {headingText}
+        </h2>
+        <ul className="mt-5 flex flex-col gap-8">{taskList}</ul>
+      </div>
     </div>
   );
 }
