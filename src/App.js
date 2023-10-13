@@ -73,8 +73,11 @@ function App(props) {
   ));
 
   //taskの数によって、単数形と複数形の表示を変える。
-  const tasksNoun = taskList.length !== 1 ? "tasks" : "task";
-  const headingText = `${taskList.length} ${tasksNoun} remaining`;
+  const tasksNoun =
+    taskList.length === 0 ? "" : taskList.length === 1 ? "task" : "tasks";
+  const headingNum = taskList.length === 0 ? "" : `${taskList.length}`;
+  const headingText =
+    taskList.length === 0 ? "You finished all tasks" : `${tasksNoun} remaining`;
 
   // タスクの追加機能
   function addTask(name) {
@@ -102,6 +105,7 @@ function App(props) {
           className="border-2 md:text-base bg-white p-3 text-center text-3xl font-bold"
           ref={listHeadingRef}
         >
+          <span className="text-red-700 mr-1">{headingNum}</span>
           {headingText}
         </h2>
         <div className="flex mt-4 md:items-center justify-center gap-3 md:flex-col">

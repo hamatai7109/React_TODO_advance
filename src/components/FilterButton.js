@@ -1,6 +1,10 @@
 import React from "react";
 
 const FilterButton = (props) => {
+  if (props.isPressed) {
+    return null;
+  }
+
   return (
     <button
       type="button"

@@ -14,7 +14,7 @@ const Form = (props) => {
       props.addTask(name);
       setName("");
     } else {
-      alert("値を入力してください");
+      alert("Error: Nothing has been typed");
     }
   }
 
@@ -38,7 +38,7 @@ const Form = (props) => {
       />
       <button
         type="submit"
-        className="btn h-12 rounded-xl w-3/4 max-w-sm hover:bg-red-500"
+        className="btn mt-4 h-12 rounded-xl w-3/4 max-w-sm hover:bg-red-500"
       >
         Add
       </button>
