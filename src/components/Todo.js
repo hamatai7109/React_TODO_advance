@@ -60,7 +60,7 @@ const Todo = (props) => {
   );
   // 一覧表示中の画面
   const viewTemplate = (
-    <div>
+    <div className="md:flex justify-between">
       <div className="flex items-center">
         <input
           id={props.id}
@@ -74,10 +74,10 @@ const Todo = (props) => {
           {props.name}
         </label>
       </div>
-      <div className="mt-3 flex justify-center gap-2">
+      <div className="mt-3 flex justify-center gap-2 md:flex-col">
         <button
           type="button"
-          className="btn w-1/2"
+          className="btn w-1/2 md:w-full"
           onClick={() => setEditing(true)}
           ref={editButtonRef}
         >
@@ -85,7 +85,7 @@ const Todo = (props) => {
         </button>
         <button
           type="button"
-          className="btn w-1/2 hover:bg-red-500"
+          className="btn w-1/2 md:w-full hover:bg-red-500"
           onClick={() => props.deleteTask(props.id)}
         >
           Delete

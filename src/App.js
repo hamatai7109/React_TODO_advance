@@ -92,19 +92,21 @@ function App(props) {
   }, [tasks.length, prevTaskLength]);
 
   return (
-    <div className="mx-auto my-8 w-3/4 bg-gray-200 p-10">
+    <div className="mx-auto max-w-3xl my-8 w-3/4 bg-gray-200 p-10">
       <h1 className="text-center text-5xl">Todo App</h1>
       <Form addTask={addTask} />
-      <div className="flex justify-center gap-3">{filterList}</div>
-      <div className="mx-auto w-3/4">
+      <div className="mt-10  mx-auto w-3/4 md:w-full">
         <h2
           id="list-heading"
           tabIndex="-1"
-          className="mt-10 border-2 bg-white p-3 text-center text-3xl font-bold"
+          className="border-2 md:text-base bg-white p-3 text-center text-3xl font-bold"
           ref={listHeadingRef}
         >
           {headingText}
         </h2>
+        <div className="flex mt-4 md:items-center justify-center gap-3 md:flex-col">
+          {filterList}
+        </div>
         <ul className="mt-5 flex flex-col gap-8">{taskList}</ul>
       </div>
     </div>
